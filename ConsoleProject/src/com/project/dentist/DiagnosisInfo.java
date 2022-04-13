@@ -4,87 +4,74 @@ import java.util.Calendar;
 
 public class DiagnosisInfo {
 	
-	private String Num;
-	private String PatientNum;
-	private String DoctorNum;
-
-	private Calendar dateTime;  //TODO date + time 하나로 **
-	private String SymptomNum; //증상번호
+	private String seq;
+	private Appointment appointment;
 	private String treatmentNum; //시술번호
-	private String resevationNum; //예약번호
 	
-	
-	public DiagnosisInfo(String num, String patientNum, String doctorNum, String date, String time, 
-			String symptomNum, String treatmentNum, String resevationNum) {
-		
-		this.Num = num;
-		this.PatientNum = patientNum;
-		this.DoctorNum = doctorNum;
-		this.SymptomNum = symptomNum;
+	public DiagnosisInfo(String seq, Appointment appointment, String treatmentNum) {
+		this.seq = seq;
+		this.appointment = appointment;
 		this.treatmentNum = treatmentNum;
-		this.resevationNum = resevationNum;
-		
-		Calendar c = Calendar.getInstance();
-		c.set(Integer.parseInt(date.split("-")[0])
-				, Integer.parseInt(date.split("-")[1])
-				, Integer.parseInt(date.split("-")[2])
-				, Integer.parseInt(time.split(":")[0])
-				, Integer.parseInt(time.split(":")[1]));
-		
-		this.dateTime = c;
+	}
+
+	public String getSeq() {
+		return seq;
+	}
+
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
+
+	public Appointment getAppointment() {
+		return appointment;
+	}
+
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
 	}
 	
 	
-	public String getNum() {
-		return Num;
-	}
-	public void setNum(String num) {
-		Num = num;
+	
+	
+	public String getAppointmentNum() {
+		return seq;
 	}
 	public String getPatientNum() {
-		return PatientNum;
+		return appointment.getSeq();
 	}
-	public void setPatientNum(String patientNum) {
-		PatientNum = patientNum;
-	}
+	
 	public String getDoctorNum() {
-		return DoctorNum;
+		return appointment.getDoctorNum();
 	}
-	public void setDoctorNum(String doctorNum) {
-		DoctorNum = doctorNum;
-	}
+
 	public Calendar getDateTime() {
-		return dateTime;
+		return appointment.getDateTime();
 	}
-	public void setDateTime(Calendar date) {
-		this.dateTime = date;
-	}
+	
 	public String getSymptomNum() {
-		return SymptomNum;
+		return appointment.getSymptomNum();
 	}
-	public void setSymptomNum(String symptomNum) {
-		SymptomNum = symptomNum;
+
+	public String getClassficationNum() {
+		return appointment.getClassficationNum();
 	}
+	
 	public String getTreatmentNum() {
 		return treatmentNum;
 	}
+
 	public void setTreatmentNum(String treatmentNum) {
 		this.treatmentNum = treatmentNum;
 	}
-	public String getResevationNum() {
-		return resevationNum;
-	}
-	public void setResevationNum(String resevationNum) {
-		this.resevationNum = resevationNum;
-	}
-
 
 	@Override
 	public String toString() {
-		return String.format(
-				"DiagnosisInfo [Num=%s, PatientNum=%s, DoctorNum=%s, dateTime=%s, SymptomNum=%s, treatmentNum=%s, resevationNum=%s]",
-				Num, PatientNum, DoctorNum, dateTime, SymptomNum, treatmentNum, resevationNum);
+		return String.format("DiagnosisInfo [seq=%s, appointment=%s, treatmentNum=%s]", seq,
+				appointment, treatmentNum);
 	}
+	
+	
+
 	
 	
 	
