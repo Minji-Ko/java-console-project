@@ -1,0 +1,9 @@
+diff a/ConsoleProject/src/com/project/dentist/admin/adminDiagnosis/Search.java b/ConsoleProject/src/com/project/dentist/admin/adminDiagnosis/Search.java	(rejected hunks)
+@@ -67,6 +67,7 @@
+ 		System.out.println("[내원날짜]\t[증상]\t[치료 내용]");
+ 		
+ 		//TODO 진료정보 불러와서 출력
++//		for(DianosisInfo d : dglist) {
+ 			
+ 		}
+ 		

@@ -2,6 +2,8 @@ package com.project.dentist.admin.adminDiagnosis;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.project.dentist.Data;
+import com.project.dentist.DiagnosisInfo;
 import com.project.dentist.Output;
 import com.project.dentist.Patient;
 
@@ -10,8 +12,10 @@ public class Search {
 	public void work() {
 		
 		Scanner scan = new Scanner(System.in);
+
+		ArrayList<Patient> patients = new ArrayList<Patient>(); //검색한 이름에 맞는 환자번호 저장 
+		Patient thePatient;   //검색하고 싶은 바로 그 환자
 		
-		ArrayList<Patient> patient = new ArrayList<Patient>(); //검색한 환자번호 저장 
 		
 		Output.subMenuStart("진료 정보 검색");
 		
@@ -19,63 +23,125 @@ public class Search {
 		String input = scan.nextLine(); 
 		
 		
-//		for(Patient p : Data.plist) {   //환자정보 ArrayList
-//			if(p.getName().equals()) {
-//				count++;
-//				patient.add(p);
-//			}
-//		}
+		for(Patient p : Data.plist) {   //환자정보 ArrayList
+			if(p.getName().equals(input)) {
+				patients.add(p);
+			}
+		}
 		
-		Patient thePatient; 
 		
-		if(patient.size() == 0) {
+		if(patients.size() == 0) {
 			System.out.println("등록된 환자명을 입력해주세요."); //TODO 이름 검색루프로 돌아가기
-		} else if (patient.size() == 1) {
-			thePatient = patient[0];
+		} else if (patients.size() == 1) {
+			thePatient = patients.get(0);
 		} else {
 			
 			System.out.println("-------------------------------");
 			
-			for(int i=0; i<patient.size(); i++) {
+			for(int i=0; i<patients.size(); i++) {
 			
-				System.out.printf("%d. %s(%s세, %s, %s)\n"
+				System.out.printf("%d. %s(%s, %s, %s)\n"
 						, i+1
-						, patient[i].getName()
-						, patient[i].getAge()
-						, patient[i].getGender() == 1 ? "남자" : "여자"
-						, patient[i].getAddress());
+						, patients.get(i).getName()
+						, patients.get(i).getBirthday()
+						, patients.get(i).getGender().equals("1") ? "남자" : "여자"
+						, patients.get(i).getAddress());
 			}
-			
 			System.out.println();
+			
 			System.out.print("번호: ✎");
 			int inputNum = scan.nextInt(); 
 			
-			if(1 <= inputNum || inputNum <= patient.size()) {
-				thePatient = patient[inputNum-1];
+			if(1 <= inputNum || inputNum <= patients.size()) {
+				thePatient = patients.get(inputNum - 1);
 			} else {
 				System.out.println("알맞은 번호를 입력해주세요."); //TODO 번호검색 루프로 돌아가기
 			}
 		}
 		
 		Output.subMenuEnd();
+
 		
+		
+		ArrayList<DiagnosisInfo> records = new ArrayList<DiagnosisInfo>();
 
 		Output.subMenuStart("진료 상세기록");
 		System.out.println("-------------------------------");
 		System.out.printf("[이름] %s", thePatient.getName());
 		System.out.println("-------------------------------");
-		System.out.println("[내원날짜]\t[증상]\t[치료 내용]");
+		System.out.println("[내원날짜]\t[증상]\t[시술 내용]");
 		
 		//TODO 진료정보 불러와서 출력
-		for()
+		for(DiagnosisInfo d : dglist) { //dglist 진료정보 ArrayList 
+			if(d.getPatientNum().equals(thePatient.getSeq())) { //환자번호와 진료정보의 환자번호가 같으면
+				System.out.printf("%tF\t%s\t%s\n"
+										, d.getDateTime()
+										, //증상번호 > 증상명
+										, //시술번호 > 시술내용);
+				records.add(d);
+			}
+		}
 		
-		System.out.printf("%tF\t%s\t%s\n", data);
 		Output.subMenuEnd();
 		
+		boolean loop = true;
 		
+		while(loop) {
+			
+			System.out.print("진단서를 확인하시겠습니까? (Y/N): ✎");
+			input = scan.nextLine();
+			
+			if (input.toUpperCase().equals("Y")) {
+				listRecord(records);
+				loop = false;
+			} else if (input.toUpperCase().equals("N")) {
+				loop = false;
+			} else {
+				System.out.println("입력이 올바르지 않습니다. Y 또는 N을 입력해주세요.");
+				System.out.println();
+			}
+		}
 		
+		Output.pause();
 		scan.close();
+		records.clear();
+		
 	}
+
+	private void listRecord(ArrayList<DiagnosisInfo> records) {
+		
+		boolean loop = true;
+			
+		while (loop) {
+			
+			Output.subMenuStart("환자 진단서 확인");
+			for(int i=0; i<records.size(); i++) {
+				System.out.printf("%d. %tF\n", i+1, records.get(i).getDateTime());
+			}
+			Output.subMenuEnd();
+			
+			Scanner scan = new Scanner(System.in);
+			System.out.print("번호: ✎");
+			int input = scan.nextInt();
+			
+			if(0 <= input && input <= records.size()) {
+				DiagnosisInfo theDate = records.get(input-1);
+				viewRecord(theDate); //TODO 진단서 출력 > 출력후 Pause하고 여기로 돌아옴
+			} else {
+				System.out.println("올바른 번호를 입력해주세요.");  //TODO 번호입력 다시받기 반복
+				System.out.println();
+			}
+
+//		scan.close; ?????
+		}
+	}
+
+	private void viewRecord(DiagnosisInfo theDate) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 
 }
 
