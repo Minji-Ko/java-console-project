@@ -12,7 +12,7 @@ public class AdminMain {
 		boolean loop = true;
 		
 		while (loop) {
-		//sfasdfasdfasdfasdf
+		//sfasdfasdfasdfasdfㅁㄴㅇㄹ
 		System.out.println("=====바른 치과=====");
 		System.out.println("1. 스케줄표 확인");
 		System.out.println("2. 환자 진료 정보");
