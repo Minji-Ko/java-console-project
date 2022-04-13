@@ -67,7 +67,9 @@ public class Search {
 		System.out.println("[내원날짜]\t[증상]\t[치료 내용]");
 		
 		//TODO 진료정보 불러와서 출력
-		for()
+//		for(DianosisInfo d : dglist) {
+			
+		}
 		
 		System.out.printf("%tF\t%s\t%s\n", data);
 		Output.subMenuEnd();
