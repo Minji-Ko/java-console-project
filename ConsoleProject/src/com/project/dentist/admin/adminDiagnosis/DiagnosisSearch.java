@@ -30,15 +30,15 @@ public class DiagnosisSearch extends AdminDiagnosis {
 		Output.line();
 		System.out.printf("[이름] %s", thePatient.getName());
 		Output.line();
-		System.out.println("[내원날짜]\t[증상]\t[시술 내용]");
+		System.out.println("[내원날짜]\t\t[증상]\t[시술 내용]");
 		
 		//TODO 진료정보 불러와서 출력
-		for(DiagnosisInfo d : dglist) { //dglist 진료정보 ArrayList 
+		for(DiagnosisInfo d : Data.dglist) { //dglist 진료정보 ArrayList 
 			if(d.getPatientNum().equals(thePatient.getSeq())) { //환자번호와 진료정보의 환자번호가 같으면
-				System.out.printf("%tF\t%s\t%s\n"
-										, d.getDateTime()
-										, //증상번호 > 증상명
-										, //시술번호 > 시술내용);
+				System.out.printf("%s\t%s\t%s\n"
+										, d.getDate()
+										, d.getSymptomNum() //TODO 증상번호 > 증상명
+										, d.getTreatmentNum()); //TODO 시술번호 > 시술내용)
 				records.add(d);
 			}
 		}
@@ -71,15 +71,15 @@ public class DiagnosisSearch extends AdminDiagnosis {
 
 	
 
-	private void listRecord(ArrayList<DiagnosisInfo> records) {
+	private void listRecord(ArrayList<DiagnosisInfo> documentrecords) {
 		
 		boolean loop = true;
 			
 		while (loop) {
 			
 			Output.subMenuStart("환자 진단서 확인");
-			for(int i=0; i<records.size(); i++) {
-				System.out.printf("%d. %tF\n", i+1, records.get(i).getDateTime());
+			for(int i=0; i<documentrecords.size(); i++) {
+				System.out.printf("%d. %s\n", i+1, documentrecords.get(i).getDate());
 			}
 			Output.subMenuEnd();
 			
@@ -87,8 +87,8 @@ public class DiagnosisSearch extends AdminDiagnosis {
 			System.out.print("번호: ✎");
 			int input = scan.nextInt();
 			
-			if(0 <= input && input <= records.size()) {
-				DiagnosisInfo theDate = records.get(input-1);
+			if(0 <= input && input <= documentrecords.size()) {
+				DiagnosisInfo theDate = documentrecords.get(input-1);
 				viewRecord(theDate); //TODO 진단서 출력 > 출력후 Pause하고 여기로 돌아옴
 			} else {
 				System.out.println("올바른 번호를 입력해주세요.");  //TODO 번호입력 다시받기 반복
