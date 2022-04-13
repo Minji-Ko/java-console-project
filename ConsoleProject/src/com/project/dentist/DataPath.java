@@ -16,6 +16,9 @@ public class DataPath {
 	final public static String FAQ답변_임플란트 = "src\\com\\project\\dentist\\data\\FAQ답변(임플란트).txt";
 	final public static String FAQ답변_라미네이트 = "src\\com\\project\\dentist\\data\\FAQ답변(라미네이트).txt";
 	final public static String FAQ답변_치아잇몸성형 = "src\\com\\project\\dentist\\data\\FAQ답변(치아잇몸성형).txt";
+	final public static String 온라인상담질문 = "src\\com\\project\\dentist\\data\\온라인 상담 질문.txt";
+	final public static String 증상 = "src\\com\\project\\dentist\\data\\증상.txt";
+	final public static String 온라인상담답글 = "src\\com\\project\\dentist\\data\\온라인 상담 답글.txt";
 
 	
 
