@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class EmployeeAdd {
 
+	//직원 추가하기
 	public static void add() {
 
 		boolean loop = true;
@@ -22,22 +23,53 @@ public class EmployeeAdd {
 				
 				System.out.print("이름 : ");
 				String name = scan.nextLine();
+				
+				if(AddCheck.isName(name)) {
+				} else {
+					continue;
+				}
 
 				System.out.print("성별(1.남자, 2.여자) : ");
 				String gender = scan.nextLine();
+				
+				if (AddCheck.isGender(gender)) {
+				} else {
+					continue;
+				}
 
 				System.out.print("생년월일(YYYY-MM-DD) : ");
 				String birth = scan.nextLine();
+				
+				if (AddCheck.isBirth(birth)) {
+				} else {
+					continue;
+				}
 
 				System.out.print("전화번호(010-XXXX-XXXX) : ");
 				String tel = scan.nextLine();
+				
+				if (AddCheck.isTel(tel)) {
+				} else {
+					continue;
+				}
 
 				System.out.print("입사일 : ");
 				String entry = scan.nextLine();
+				
+				if (AddCheck.isBirth(entry)) {
+				} else {
+					continue;
+				}
 
 				if (emp.equals("1")) {
 					System.out.print("자기소개서 path : ");
 					String path = scan.nextLine();
+					
+					if (AddCheck.isPath(path)) {
+						
+					} else {
+						continue;
+					}
 
 					String seq = getdSeq();
 
@@ -67,6 +99,8 @@ public class EmployeeAdd {
 		pause();
 	}
 
+	
+	//의사 번호 부여
 	private static String getdSeq() {
 		int dmax = 0;
 		for (Dentist d : Data.dlist) {
@@ -78,6 +112,7 @@ public class EmployeeAdd {
 		return (dmax + 1) + "";
 	}
 
+	//간호사 번호 부여
 	private static String getnSeq() {
 		int nmax = 0;
 		for (Nurse n : Data.nlist) {
@@ -89,6 +124,8 @@ public class EmployeeAdd {
 		return (nmax + 1) + "";
 	}
 
+	
+	//회원 삭제하기
 	public static void delete() {
 
 		boolean loop = true;
