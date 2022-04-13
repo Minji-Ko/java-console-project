@@ -64,19 +64,41 @@ public class Search {
 		System.out.println("-------------------------------");
 		System.out.printf("[이름] %s", thePatient.getName());
 		System.out.println("-------------------------------");
-		System.out.println("[내원날짜]\t[증상]\t[치료 내용]");
+		System.out.println("[내원날짜]\t[증상]\t[시술 내용]");
 		
 		//TODO 진료정보 불러와서 출력
-//		for(DianosisInfo d : dglist) {
-			
-		}
+		for(DianosisInfo d : dglist) { //dglist 진료정보 ArrayList 
+			if(d.getPatientNum().equals(thePatient.getNum())) { //환자번호와 진료정보의 환자번호가 같으면
+				
+				System.out.printf("%tF\t%s\t%s\n"
+										, d.getDate
+										, //증상번호 > 증상명
+										, //시술번호 > 시술내용);
+			}
+//		}
 		
-		System.out.printf("%tF\t%s\t%s\n", data);
 		Output.subMenuEnd();
 		
+		boolean loop = true;
 		
+		while(loop) {
+			System.out.print("진단서를 확인하시겠습니까? (Y/N): ✎");
+			input = scan.nextLine();
+			
+			if (input.toUpperCase.equals("Y")) {
+				//진단서메뉴
+				loop = false;
+			} else if (input.toUpperCase.equals("N")) {
+				//상위 메뉴
+				loop = false;
+			} else {
+				System.out.println("입력이 올바르지 않습니다. Y 또는 N을 입력해주세요.");
+				System.out.println();
+			}
+		}
 		
 		scan.close();
+		
 	}
 
 }

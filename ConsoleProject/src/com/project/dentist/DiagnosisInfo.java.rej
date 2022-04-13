@@ -1,0 +1,18 @@
+diff a/ConsoleProject/src/com/project/dentist/DiagnosisInfo.java b/ConsoleProject/src/com/project/dentist/DiagnosisInfo.java	(rejected hunks)
+@@ -1,5 +1,15 @@
+ package com.project.dentist;
+ 
+ public class DiagnosisInfo {
+-
++	
++	private String Num;
++	private String PatientNum;
++	private String DoctorNum;
++	
++	private Calendar date;  //TODO date + time 하나로? **
++	private String SymptomNum //증상번호
++	private String treatmentNum //시술번호
++	private String resevationNum //예약번호
++	
++	
+ }
