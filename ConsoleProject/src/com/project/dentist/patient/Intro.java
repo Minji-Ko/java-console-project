@@ -11,7 +11,7 @@ public class Intro {
 		this.scan = new Scanner(System.in);
 	}
 	
-	public void printIntro() {
+	public static void printIntro() {
 		
 		Output.subMenuStart("병원 기본 정보");
 		System.out.println("  [소개글] 안녕하세요, 바른치과입니다.");

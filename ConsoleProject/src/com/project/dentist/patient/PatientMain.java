@@ -4,7 +4,7 @@ import java.util.Scanner;
 import com.project.dentist.Data;
 
 
-public class Main {
+public class PatientMain {
 
    public static void main(String[] args) {
  
@@ -50,7 +50,6 @@ public class Main {
 
          Scanner scan = new Scanner(System.in);
 
-         Work work = new Work();
          System.out.print("번호 입력: ");
          String input = scan.nextLine();
          System.out.println();
@@ -62,7 +61,7 @@ public class Main {
              boolean subLoop = true;
              while (subLoop) {
 
-	        	 patientOutput.introduce();
+	        	 PatientOutput.introduce();
 	        	 
 	        	 System.out.print("확인할 정보 번호를 입력하세요. ✎");
 	        	 String subInput = scan.nextLine();
@@ -70,13 +69,13 @@ public class Main {
 	        	 
 	        	 if (subInput.equals("1")) {
 	        		 
-	        		 work.printIntro();
-	        		 patientOutput.pause();
+	        		 Intro.printIntro();
+	        		 PatientOutput.pause();
 	        		 
 	        	 } else if (subInput.equals("2")) {
 	        		 
-	        		 patientOutput.drList();
-	        		 patientOutput.pause();
+	        		 PatientOutput.drList();
+	        		 PatientOutput.pause();
 	        		 
 	        		 
 	        	 } else if (subInput.equals("0")) {

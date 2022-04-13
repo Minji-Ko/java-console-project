@@ -28,7 +28,7 @@ public class Data {
             //번호,아이디,비밀번호,이름,성별,생년월일,주소
             String[] temp = line.split(",");
             
-            Patient p = new Patient(temp[0], temp[1], temp[2], temp[3], temp[4],temp[5],temp[6]);
+            Patient p = new Patient(temp[0], temp[1], temp[2], temp[3], temp[4],temp[5],temp[6], temp[7]);
             
             plist.add(p);
             

@@ -3,7 +3,7 @@ package com.project.dentist.patient;
 import java.util.Scanner;
 import com.project.dentist.Output;
 
-public class patientOutput {
+public class PatientOutput {
 
 	
 	public static void introduce() {
@@ -26,15 +26,15 @@ public class patientOutput {
 		
 	}
 	
-	public static void drList() {
-		
-		Output.subMenuStart("의료진 정보");
-		String[] menu;
-//		for ( String name : Data.dlist ) {
-//			Data.dlist.getName() }; 수정 중
-		Output.subMenuContent(menu);
-		Output.subMenuEnd();
-	}
+//	public static void drList() {
+//		
+//		Output.subMenuStart("의료진 정보");
+//		String[] menu;
+////		for ( String name : Data.dlist ) {
+////			Data.dlist.getName() }; 수정 중
+//		Output.subMenuContent(menu);
+//		Output.subMenuEnd();
+//	}
 	
 
 }
