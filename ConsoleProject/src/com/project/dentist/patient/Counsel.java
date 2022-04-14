@@ -8,10 +8,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 import com.project.dentist.Data;
 import com.project.dentist.DataPath;
-<<<<<<< HEAD:ConsoleProject/src/com/project/dentist/patient/counsel.java
-=======
-import com.project.dentist.OnlineQuestion;
->>>>>>> 33895c63346bbfc227f5c4cc4d63e4c010a1d2fd:ConsoleProject/src/com/project/dentist/patient/Counsel.java
 import com.project.dentist.Output;
 
 public class Counsel {
