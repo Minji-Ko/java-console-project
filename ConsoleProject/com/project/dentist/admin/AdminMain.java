@@ -3,12 +3,16 @@ package com.project.dentist.admin;
 import java.util.Scanner;
 import com.project.dentist.Output;
 import com.project.dentist.admin.adminDiagnosis.AdminDiagnosis;
+import com.project.dentist.admin.adminEmployee.EmployeeList;
+import com.project.dentist.admin.inventory.Inventory;
 
 public class AdminMain {
 	
 	public static void main() { //관리자 메인화면
 
 		AdminDiagnosis diagnosis = new AdminDiagnosis();
+		EmployeeList e = new EmployeeList();
+		Inventory i = new Inventory();
 		
 		boolean loop = true;
 		
@@ -32,11 +36,11 @@ public class AdminMain {
 			} else if (input.equals("2")) {
 				diagnosis.work();
 			} else if (input.equals("3")) {
-				//adminEmployee.work();
+				e.main();
 			} else if (input.equals("4")) {
 				//adminSales.work();
 			} else if (input.equals("5")) {
-				//adminInventory.work();
+				i.main();
 			} else if (input.equals("6")) {
 				//adminOnlineChat.work();
 			} else if (input.equals("0")) {
