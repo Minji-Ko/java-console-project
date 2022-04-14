@@ -10,16 +10,18 @@ public class Appointment {
 	private String doctorNum; //(F)
 
 	private Calendar dateTime;  //date + time 하나로 저장***  > 초기화 시에는 따로 넣어줌
-	private String classficationNum; //증상번호(F)
+	private String symptomNum; //증상번호(F)
+	private String classficationNum; //진료구분번호(F)
 	
 	
 	
 	public Appointment(String seq, String patientNum, String doctorNum, String date, String time,
-			String classficationNum) {
+			String symptomNum, String classficationNum) {
 
 		this.seq = seq;
 		this.patientNum = patientNum;
 		this.doctorNum = doctorNum;
+		this.symptomNum = symptomNum;
 		this.classficationNum = classficationNum;
 
 		Calendar c = Calendar.getInstance();
@@ -78,18 +80,25 @@ public class Appointment {
 	public void setDateTime(Calendar dateTime) {
 		this.dateTime = dateTime;
 	}
+	public String getSymptomNum() {
+		return symptomNum;
+	}
+	public void setSymptomNum(String symptomNum) {
+		this.symptomNum = symptomNum;
+	}
+	
 	public String getClassficationNum() {
 		return classficationNum;
 	}
 	public void setClassficationNum(String classficationNum) {
 		this.classficationNum = classficationNum;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format(
-				"Reservation [seq=%s, patientNum=%s, doctorNum=%s, dateTime=%s, classficationNum=%s]",
-				seq, patientNum, doctorNum, dateTime, classficationNum);
+				"Reservation [seq=%s, patientNum=%s, doctorNum=%s, dateTime=%s, symptomNum=%s, classficationNum=%s]",
+				seq, patientNum, doctorNum, dateTime, symptomNum, classficationNum);
 	}
 	
 	

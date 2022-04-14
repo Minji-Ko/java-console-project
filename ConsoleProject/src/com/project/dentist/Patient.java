@@ -62,7 +62,6 @@ public class Patient {
    public void setBirthday(String birthday) {
       this.birthday = birthday;
    }
- 
    public String getAddress() {
       return address;
    }

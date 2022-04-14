@@ -1,10 +1,9 @@
+
 package com.project.dentist;
 
 public class DataPath {
-
-
-
-	final public static String 환자 = "src\\com\\project\\dentist\\data\\회원정보.txt";
+	
+	
 	final public static String FAQ질문_치아교정 = "src\\com\\project\\dentist\\data\\FAQ질문(치아교정).txt";
 	final public static String FAQ질문_치아미백 = "src\\com\\project\\dentist\\data\\FAQ질문(치아미백).txt";
 	final public static String FAQ질문_충치치료 = "src\\com\\project\\dentist\\data\\FAQ질문(충치치료).txt";
@@ -22,7 +21,13 @@ public class DataPath {
 	final public static String 온라인상담답글 = "src\\com\\project\\dentist\\data\\온라인 상담 답글.txt";
 	final public static String 자기소개서 = ".\\src\\com\\project\\dentist\\data\\자기소개서";
 	final public static String 진료후기 = ".\\src\\com\\project\\dentist\\data\\진료후기";
+	
 
-
+<<<<<<< HEAD
+	final public static String 환자 = ".\\src\\com\\project\\dentist\\data\\회원정보.txt";
+	final public static String 진료정보 = ".\\src\\com\\project\\dentist\\data\\진료정보.txt";
+=======
+>>>>>>> 33895c63346bbfc227f5c4cc4d63e4c010a1d2fd
 
 }
+

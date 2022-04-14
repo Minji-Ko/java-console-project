@@ -1,11 +1,7 @@
 package com.project.dentist.patient;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.Scanner;
-import com.project.dentist.DataPath;
 import com.project.dentist.Output;
-import com.project.dentist.admin.adminEmployee.Data;
 
 public class Intro {
 
@@ -15,51 +11,17 @@ public class Intro {
 		this.scan = new Scanner(System.in);
 	}
 	
-
-	
-	
-	public static void drList() {
+	public static void printIntro() {
 		
-		if (Data.dlist.size() == 0) {
-			Data.load();
-		}
-		
-		Output.subMenuStart("의료진 정보");
-		String[] menu = new String[Data.dlist.size()+1];
-		for (int i=0 ; i<Data.dlist.size() ; i++) {
-			menu[i] = Data.dlist.get(i).getName();
-		}		
-		menu[Data.dlist.size()] = "상위메뉴";
-		Output.subMenuContent(menu);
+		Output.subMenuStart("병원 기본 정보");
+		System.out.println("  [소개글] 안녕하세요, 바른치과입니다.");
+		System.out.println("  [내용] 믿을 수 있는 의료진, 믿을 수 있는 장비,");
+		System.out.println("        환자의 안전을 최우선으로 생각하는 바른치과!");
+		System.out.println("  [위치] 서울 강남구 테헤란로 132");
+		System.out.println("  [전화번호] 02-3482-4632");
 		Output.subMenuEnd();
 	}
 	
-	
-	
-	public void printDr(String drNum) {
-		
-		
-		try {
-		
-			BufferedReader reader = new BufferedReader(new FileReader(DataPath.자기소개서 + drNum + ".txt"));
-			
-			String line = "";
-			while ((line = reader.readLine()) != null) {
-				
-				System.out.println(line);
-			}
-			System.out.println();
-			reader.close();
-			
-			PatientOutput.pause();
-			
-		} catch (Exception e) {
-			System.out.println("Intro.printDr");
-			e.printStackTrace();
-		}
 
-		
-	}
-	
 	
 }
