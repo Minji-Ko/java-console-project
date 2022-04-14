@@ -14,6 +14,7 @@ public class PatientMain {
 
          // 그림
 
+    	 
          System.out.println("============");
          System.out.println("**회원 모드**");
          System.out.println("============");
@@ -50,6 +51,7 @@ public class PatientMain {
 
          Scanner scan = new Scanner(System.in);
 
+         Intro intro = new Intro();
          System.out.print("번호 입력: ");
          String input = scan.nextLine();
          System.out.println();
@@ -63,25 +65,46 @@ public class PatientMain {
 
 	        	 PatientOutput.introduce();
 	        	 
-	        	 System.out.print("확인할 정보 번호를 입력하세요. ✎");
+	        	 System.out.print("확인할 정보 번호를 입력하세요. ✎ ");
 	        	 String subInput = scan.nextLine();
 	        	 System.out.println();
 	        	 
 	        	 if (subInput.equals("1")) {
 	        		 
-	        		 Intro.printIntro();
+	        		 PatientOutput.printIntro();
 	        		 PatientOutput.pause();
 	        		 
 	        	 } else if (subInput.equals("2")) {
 	        		 
+<<<<<<< HEAD
 	        		 //PatientOutput.drList();
 	        		 PatientOutput.pause();
 	        		 
+=======
+	        		 boolean subsubLoop = true;
+	        		 while (subsubLoop) {
+	        			 
+		        		 intro.drList();
+		        		 
+		        		 System.out.print("확인할 의사 번호를 입력하세요. ✎ ");
+		        		 String drNum = scan.nextLine();
+		        		 System.out.println();
+		        		 
+		        		 if (Integer.parseInt(drNum) < 7 && Integer.parseInt(drNum) > 0) {
+		        			 intro.printDr(drNum);
+		        			 
+		        		 } else if (drNum.equals("0")) {
+		        			 subsubLoop = false;
+		        		 } else {
+		        			 System.out.println("올바른 번호를 입력하세요.");
+		        		 }
+	        		 }
+>>>>>>> 33895c63346bbfc227f5c4cc4d63e4c010a1d2fd
 	        		 
 	        	 } else if (subInput.equals("0")) {
 	        		 subLoop = false;
 	        	 } else {
-	        		System.out.println("0~2의 번호를 입력하세요.");
+	        		System.out.println("올바른 번호를 입력하세요.");
 	        	 }
              }
 
@@ -99,6 +122,37 @@ public class PatientMain {
             // 진료 상담
          } else if (input.equals("5")) {
             // 진료 후기
+        	 
+        	 boolean subLoop = true;
+        	 while (subLoop) {
+        		
+        		 PatientOutput.review();
+	        	 System.out.print("번호를 입력하세요. ✎ ");
+	        	 String subInput = scan.nextLine();
+	        	 System.out.println();
+	        	 
+	        	 if (subInput.equals("1")) {
+	        		 
+	        		 PatientReview.DrReview();
+	        		 System.out.print("진료 후기를 조회할 의사를 선택해 주세요. ✎ ");
+	        		 
+	        		 String drNum = scan.nextLine();
+	        		 System.out.println();
+	        		 
+	        		 PatientReview.printReview(drNum);
+	        		 PatientOutput.pause();
+	        		 
+	        	 } else if (subInput.equals("2")) {
+	        		 
+	        
+	        	 } else if (subInput.equals("0")) {
+	        		 
+	        		 
+	        	 } else { 
+	        		 
+	        		 System.out.println("올바른 번호를 입력하세요.");
+	        	 }
+        	 }
          } else if (input.equals("0")) {
             // 초기 메인 화면
          } else {
