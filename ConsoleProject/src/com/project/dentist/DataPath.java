@@ -23,11 +23,7 @@ public class DataPath {
 	final public static String 진료후기 = ".\\src\\com\\project\\dentist\\data\\진료후기";
 	
 
-<<<<<<< HEAD
-	final public static String 환자 = ".\\src\\com\\project\\dentist\\data\\회원정보.txt";
-	final public static String 진료정보 = ".\\src\\com\\project\\dentist\\data\\진료정보.txt";
-=======
->>>>>>> 33895c63346bbfc227f5c4cc4d63e4c010a1d2fd
+
 
 }
 

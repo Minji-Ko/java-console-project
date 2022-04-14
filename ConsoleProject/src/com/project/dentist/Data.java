@@ -12,13 +12,9 @@ public class Data {
    public static ArrayList<Appointment> alist = new ArrayList<Appointment>();
    public static ArrayList<DiagnosisInfo> dglist = new ArrayList<DiagnosisInfo>();
    public static ArrayList<DiagnosisDocument> ddlist = new ArrayList<DiagnosisDocument>();
-<<<<<<< HEAD
-
-
-=======
    public static ArrayList<OnlineQuestion> olist = new ArrayList<OnlineQuestion>();
    
->>>>>>> 33895c63346bbfc227f5c4cc4d63e4c010a1d2fd
+
    
    
    public static void load() {
