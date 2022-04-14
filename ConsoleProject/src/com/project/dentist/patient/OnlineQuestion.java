@@ -1,4 +1,4 @@
-package com.project.dentist;
+package com.project.dentist.patient;
 
 public class OnlineQuestion {
 
