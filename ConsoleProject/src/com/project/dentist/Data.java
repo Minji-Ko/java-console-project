@@ -12,7 +12,8 @@ public class Data {
    public static ArrayList<Appointment> alist = new ArrayList<Appointment>();
    public static ArrayList<DiagnosisInfo> dglist = new ArrayList<DiagnosisInfo>();
    public static ArrayList<DiagnosisDocument> ddlist = new ArrayList<DiagnosisDocument>();
-   
+
+
    
    
    public static void load() {
@@ -33,6 +34,25 @@ public class Data {
             Patient p = new Patient(temp[0], temp[1], temp[2], temp[3], temp[4],temp[5],temp[6], temp[7]);
             
             plist.add(p);
+            
+         }
+
+         reader.close();
+         
+         
+         reader = new BufferedReader(new FileReader(DataPath.진료정보));
+
+         line = null;
+
+         while ((line = reader.readLine()) != null) {
+            
+        	 //1,1,1,2022-02-03,2,3,1,1
+            //진료번호,환자번호,의사번호,내원날짜,
+            String[] temp = line.split(",");
+            
+            
+            
+            
             
          }
 
