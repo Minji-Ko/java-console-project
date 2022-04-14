@@ -1,4 +1,4 @@
-package com.project.dentist;
+package com.project.dentist.patient;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Scanner;
+import com.project.dentist.Data;
+import com.project.dentist.DataPath;
+import com.project.dentist.Output;
 
 public class Counsel {
 
