@@ -55,6 +55,28 @@ public class Appointment {
 	public Calendar getDateTime() {
 		return dateTime;
 	}
+	public String getDate() {
+		return String.format("%tF", dateTime);
+	}
+	public String getTime() {
+		return dateTime.get(Calendar.HOUR_OF_DAY) + ":" + dateTime.get(Calendar.MINUTE);
+	}
+	public void setDate(String date) {
+		String[] dates = date.split("-");
+		dateTime.set(Integer.parseInt(dates[0]), 
+						Integer.parseInt(dates[1]), 
+						Integer.parseInt(dates[2]));
+	}
+	public void setTime(String time) {
+		String[] times = time.split(":");
+		dateTime.set(Integer.parseInt(times[0]), 
+				Integer.parseInt(times[1]));
+		
+	}
+	public void setDateTime(String date, String time) {
+		setDate(date);
+		setTime(time);
+	}
 	public void setDateTime(Calendar dateTime) {
 		this.dateTime = dateTime;
 	}

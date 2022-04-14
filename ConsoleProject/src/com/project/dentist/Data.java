@@ -8,8 +8,10 @@ import java.util.ArrayList;
 
 public class Data {
    
-   
    public static ArrayList<Patient> plist = new ArrayList<Patient>();
+   public static ArrayList<Appointment> alist = new ArrayList<Appointment>();
+   public static ArrayList<DiagnosisInfo> dglist = new ArrayList<DiagnosisInfo>();
+   public static ArrayList<DiagnosisDocument> ddlist = new ArrayList<DiagnosisDocument>();
    
    
    

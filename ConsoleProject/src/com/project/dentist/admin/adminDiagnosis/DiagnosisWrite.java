@@ -1,7 +1,13 @@
 package com.project.dentist.admin.adminDiagnosis;
 
+import java.util.Calendar;
 import java.util.Scanner;
+import java.util.stream.Stream;
+import com.project.dentist.Appointment;
+import com.project.dentist.Data;
 import com.project.dentist.DataPath;
+import com.project.dentist.DiagnosisDocument;
+import com.project.dentist.DiagnosisInfo;
 import com.project.dentist.Output;
 import com.project.dentist.Patient;
 
@@ -20,77 +26,157 @@ public class DiagnosisWrite extends AdminDiagnosis {
 		
 		Patient thePatient = findPatient();
 		
-		Output.subMenuStart("진료 정보 작성");
-		Output.line();
-		System.out.printf("이름: %s\n" , thePatient.getName());
-		System.out.printf("생년월일: %s\n", thePatient.getBirthday());
-		System.out.printf("주소: %s\n", thePatient.getAddress());
-		System.out.printf("번호: %s\n", thePatient.getPhoneNum());
-		System.out.println();
+		Appointment recentDiagnosis = findRecentDiagnosis(thePatient);
 		
-		System.out.println("▶ 증상 선택 ─────────────────────────");
+		if(recentDiagnosis != null) {
 		
-		
-		listSymptom();
-		
-		System.out.print("증상: ✎"); //TODO 항목에 맞지 않는 정보 입력시 루프
-		String symptop = scan.nextLine(); //TODO 번호 입력받아서 증상번호로 변환
-		
+			Output.subMenuStart("진료 정보 작성");
+			Output.line();
+			System.out.printf("이름: %s\n" , thePatient.getName());
+			System.out.printf("생년월일: %s\n", thePatient.getBirthday());
+			System.out.printf("주소: %s\n", thePatient.getAddress());
+			System.out.printf("번호: %s\n", thePatient.getPhoneNum());
+			System.out.println();
+				
+			System.out.println("▶ 시술 선택 ─────────────────────────"); //시술에 따른 증상을 set
 			
-		System.out.println("▶ 시술 선택 ─────────────────────────");
-		
-		listTreatmemt();
-		
-		System.out.print("시술: ✎"); //TODO 항목에 맞지 않는 정보 입력시 루프
-		String treatment = scan.nextLine(); //TODO 번호 입력받아서 시술내용으로 변환
-		
-		System.out.println("▶ 의사 소견 작성 ─────────────────────────");
-		
-		System.out.print("의사 소견: ✎"); //TODO ""을 반환시 루프
-		String opinion = scan.nextLine(); 
-		
-		Output.subMenuEnd();
-		
-		
+			listTreatmemt();
+			
+			System.out.print("시술: ✎"); //TODO 항목에 맞지 않는 정보 입력시 루프
+			String treatment = scan.nextLine(); //TODO 번호 입력받아서 시술내용으로 변환
+			
+			System.out.println("▶ 의사 소견 작성 ─────────────────────────");
+			
+			System.out.print("의사 소견: ✎"); //TODO ""을 반환시 루프
+			String opinion = scan.nextLine(); 
+			
+			Output.subMenuEnd();
+			
+			
+	
+			boolean loop = true;
+			
+			while(loop) {
+	
+				System.out.print("작성하신 진료 정보를 저장하시겠습니까? (Y/N): ✎");
+				String input = scan.nextLine();
+				System.out.println();
+				
+				if (input.toUpperCase().equals("Y")) {
+					saveRecord(thePatient, recentDiagnosis, treatment, opinion);
+					setReservation();
+					loop = false;
+					
+				} else if (input.toUpperCase().equals("N")) {
+					loop = false;
+				} else {
+					System.out.println("입력이 올바르지 않습니다. Y 또는 N을 입력해주세요.");
+					System.out.println();
+				}
+				
+			}
+			
+		} else {
+			System.out.println("작성할 진료 내역이 없습니다.");
+		}
+	
+		Output.pause();
 
-		boolean loop = true;
-		
-		while(loop) {
+	}	
 
-			System.out.print("작성하신 진료 정보를 저장하시겠습니까? (Y/N): ✎");
+	private void setReservation() {
+		
+		while(true) {
+
+			System.out.println("다음 진료 날짜를 입력하시겠습니까? (Y/N): ✎");
 			String input = scan.nextLine();
 			System.out.println();
 			
 			if (input.toUpperCase().equals("Y")) {
-				
-				saveRecord(thePatient, symptop, treatment, opinion);
-				setReservation();
-				loop = false;
+				//TODO 예약하기 화면으로 이동
+				return;
 			} else if (input.toUpperCase().equals("N")) {
-				loop = false;
+				return;
 			} else {
 				System.out.println("입력이 올바르지 않습니다. Y 또는 N을 입력해주세요.");
 				System.out.println();
 			}
 			
 		}
-		
-		Output.pause();
-	
-	}	
-
-	private void setReservation() {
-
-		System.out.println("다음 진료 날짜를 입력하시겠습니까? (Y/N): ✎");
-		String input = scan.nextLine();
 	
 	}
 
-	private void saveRecord(Patient thePatient, String symptop, String treatment, String opinion) {
-		// TODO Auto-generated method stub
+	private void saveRecord(Patient thePatient, Appointment recentDiagnosis, String treatment, String opinion) {
+
+		//진료기록 저장
+		String diagnosisNum = findMaxSeq();
+		
+		DiagnosisInfo dg
+				= new DiagnosisInfo(diagnosisNum, treatment, recentDiagnosis); 
+		
+		Data.dglist.add(dg);
+		
+		
+		//진단서 저장
+		DiagnosisDocument dd
+				= new DiagnosisDocument(findMaxSeq2(), thePatient.getSeq(), diagnosisNum, opinion);
+		
+		Data.ddlist.add(dd);
 		
 		System.out.println("작성하신 진료 정보가 저장되었습니다.");
 		System.out.println();
+	}
+
+	private String findMaxSeq() {
+		
+		int max = 0;
+		
+		for(DiagnosisInfo d : Data.dglist) {
+			if(Integer.parseInt(d.getSeq()) > max) { 
+				max = Integer.parseInt(d.getSeq());
+			}
+		}
+		
+		return "" + (max + 1);
+		
+	}
+	
+	private String findMaxSeq2() {  //이거 위에꺼랑 합칠 수 없나? TODO
+		
+		int max = 0;
+		
+		for(DiagnosisDocument d : Data.ddlist) {
+			if(Integer.parseInt(d.getSeq()) > max) { 
+				max = Integer.parseInt(d.getSeq());
+			}
+		}
+		
+		return "" + (max + 1);
+		
+	}
+	
+	private Appointment findRecentDiagnosis(Patient thePatient) {
+		
+		Calendar now = Calendar.getInstance();
+		
+		Data.alist.sort((a1, a2) -> {
+			return a2.getDateTime().compareTo(a1.getDateTime());
+		}); //날짜 내림차순 정렬
+		
+		for (Appointment a : Data.alist) {
+			if(thePatient.getSeq().equals(a.getPatientNum())) {
+				if(a.getDateTime().compareTo(now) < 0) {
+					
+					for(DiagnosisInfo d : Data.dglist) {
+						if(!a.getSeq().equals(d.getAppointmentNum())) {
+							return a;	
+						}
+					}
+				}
+			}
+		}
+		return null;
+	
 	}
 
 	private void listTreatmemt() {
