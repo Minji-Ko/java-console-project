@@ -1,6 +1,9 @@
 package com.project.dentist.admin.adminEmployee;
 
 import java.util.Scanner;
+import com.project.dentist.Dataemp;
+import com.project.dentist.Doctor;
+import com.project.dentist.Nurse;
 
 public class EmployeeAdd {
 
@@ -75,9 +78,9 @@ public class EmployeeAdd {
 
 					System.out.println("입력한 정보 : " + seq + " " + name + " " + gender + " " + birth + " " + tel + " " + entry + " " + path);
 
-					Dentist d = new Dentist(seq,name,gender,birth,tel,entry,path);
+					Doctor d = new Doctor(seq,name,gender,birth,tel,entry,path);
 
-					Data.dlist.add(d);
+					Dataemp.dlist.add(d);
 					System.out.println("직원 추가가 완료되었습니다.");
 					loop = false;
 				} else if (emp.equals("2")) {
@@ -85,7 +88,7 @@ public class EmployeeAdd {
 					System.out.println("입력한 정보 : " + seq + " " + name + " " + gender + " " + birth + " " + tel + " " + entry);
 
 					Nurse n = new Nurse(seq, name, gender, birth, tel, entry);
-					Data.nlist.add(n);
+					Dataemp.nlist.add(n);
 					System.out.println("직원 추가가 완료되었습니다.");
 					loop = false;
 				}
@@ -103,7 +106,7 @@ public class EmployeeAdd {
 	//의사 번호 부여
 	private static String getdSeq() {
 		int dmax = 0;
-		for (Dentist d : Data.dlist) {
+		for (Doctor d : Dataemp.dlist) {
 			int seq = Integer.parseInt(d.getSeq());
 			if (seq > dmax) {
 				dmax = seq;
@@ -115,7 +118,7 @@ public class EmployeeAdd {
 	//간호사 번호 부여
 	private static String getnSeq() {
 		int nmax = 0;
-		for (Nurse n : Data.nlist) {
+		for (Nurse n : Dataemp.nlist) {
 			int seq = Integer.parseInt(n.getSeq());
 			if (seq > nmax) {
 				nmax = seq;
@@ -144,9 +147,9 @@ public class EmployeeAdd {
 
 					String input = scan.nextLine();
 
-					Dentist result = null;
+					Doctor result = null;
 
-					for (Dentist d : Data.dlist) {
+					for (Doctor d : Dataemp.dlist) {
 						if (d.getName().equals(input)) {
 							result = d;
 							break;
@@ -154,7 +157,7 @@ public class EmployeeAdd {
 					}
 
 					if (result != null) {
-						Data.dlist.remove(result);
+						Dataemp.dlist.remove(result);
 						System.out.println("삭제가 완료되었습니다.");
 					} else {
 						System.out.println("입력하신 이름이 존재하지 않습니다.");
@@ -171,7 +174,7 @@ public class EmployeeAdd {
 
 					Nurse result = null;
 
-					for (Nurse n : Data.nlist) {
+					for (Nurse n : Dataemp.nlist) {
 						if (n.getName().equals(input)) {
 							result = n;
 							break;
@@ -179,7 +182,7 @@ public class EmployeeAdd {
 					}
 
 					if (result != null) {
-						Data.nlist.remove(result);
+						Dataemp.nlist.remove(result);
 						System.out.println("삭제가 완료되었습니다.");
 						loop = false;
 					} else {

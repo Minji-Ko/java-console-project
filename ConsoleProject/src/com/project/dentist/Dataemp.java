@@ -1,4 +1,4 @@
-package com.project.dentist.admin.adminEmployee;
+package com.project.dentist;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,9 +6,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-public class Data {
+public class Dataemp {
 	
-	public static ArrayList<Dentist> dlist = new ArrayList<Dentist>();
+	public static ArrayList<Doctor> dlist = new ArrayList<Doctor>();
 	public static ArrayList<Nurse> nlist = new ArrayList<Nurse>();
 	
 	public static void load() {
@@ -21,7 +21,7 @@ public class Data {
 			while ((line = reader.readLine()) != null) {
 				String[] temp = line.split(",");
 				
-				Dentist d = new Dentist(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6]);
+				Doctor d = new Doctor(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6]);
 				
 				dlist.add(d);
 				
@@ -56,7 +56,7 @@ public class Data {
 			
 			BufferedWriter writer = new BufferedWriter(new FileWriter(DataPath.의사));
 			
-			for (Dentist d : dlist) {
+			for (Doctor d : dlist) {
 				
 				//번호,이름,성별,생년월일,전화번호,입사일,자기소개서
 				String line = String.format("%s,%s,%s,%s,%s,%s,%s\n"
