@@ -49,6 +49,10 @@ public class Output {
 		System.out.println("╰─────────────────────────────────────────╯");
 	}
 	
+	public static void line() {
+		System.out.println("-------------------------------");
+	}
+	
 	public static void pause() {
 		
 		System.out.println("계속하시려면 [엔터]를 입력하세요.");
