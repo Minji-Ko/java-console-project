@@ -46,6 +46,8 @@ public class PatientInfo {
 
 
 	}
+	
+	
 
 
 	// 회원 정보 수정 > TODO 정보 수정해서 파일에 변경해서 저장하려면 어떻게...????????
