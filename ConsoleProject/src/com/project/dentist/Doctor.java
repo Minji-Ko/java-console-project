@@ -1,6 +1,6 @@
-package com.project.dentist.admin.adminEmployee;
+package com.project.dentist;
 
-public class Dentist {
+public class Doctor {
 	
 	private String seq;
 	private String name;
@@ -10,7 +10,7 @@ public class Dentist {
 	private String entry;
 	private String path;
 	
-	public Dentist(String seq, String name, String gender, String birth, String tel, String entry,
+	public Doctor(String seq, String name, String gender, String birth, String tel, String entry,
 			String path) {
 		this.seq = seq;
 		this.name = name;

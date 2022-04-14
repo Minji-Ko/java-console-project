@@ -1,13 +1,14 @@
 package com.project.dentist.admin.adminEmployee;
 
 import java.util.Scanner;
+import com.project.dentist.Dataemp;
 import com.project.dentist.Output;
 
 public class EmployeeList {
 	
 	public void main() {
 		
-		Data.load();
+		Dataemp.load();
 		
 		List l = new List();
 		Output o = new Output();
@@ -40,7 +41,7 @@ public class EmployeeList {
 		
 		}
 		
-		Data.save();
+		Dataemp.save();
 
 	}
 

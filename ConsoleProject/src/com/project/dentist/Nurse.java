@@ -1,4 +1,4 @@
-package com.project.dentist.admin.adminEmployee;
+package com.project.dentist;
 
 public class Nurse {
 	
