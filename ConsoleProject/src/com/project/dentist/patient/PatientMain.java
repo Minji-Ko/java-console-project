@@ -74,7 +74,7 @@ public class PatientMain {
 	        		 
 	        	 } else if (subInput.equals("2")) {
 	        		 
-	        		 PatientOutput.drList();
+	        		 //PatientOutput.drList();
 	        		 PatientOutput.pause();
 	        		 
 	        		 
