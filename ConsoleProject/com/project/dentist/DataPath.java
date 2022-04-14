@@ -22,6 +22,9 @@ public class DataPath {
 	final public static String 온라인상담답글 = "src\\com\\project\\dentist\\data\\온라인 상담 답글.txt";
 	final public static String 자기소개서 = ".\\src\\com\\project\\dentist\\data\\자기소개서";
 	final public static String 진료후기 = ".\\src\\com\\project\\dentist\\data\\진료후기";
+	final public static String 진료예약 = ".\\src\\com\\project\\dentist\\data\\진료예약";
 	
+	final public static String 환자 = ".\\src\\com\\project\\dentist\\data\\회원정보.txt";
+	final public static String 진료정보 = ".\\src\\com\\project\\dentist\\data\\진료정보.txt";
 
 }
